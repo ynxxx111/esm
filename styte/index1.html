@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>火箭糖果 - GoodsSweets好日子食品</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 与主站完全一致的样式，可直接复用 */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif; }
+        :root { --primary-pink: #ff7eb9; --light-pink: #ffd6e7; --dark-pink: #e84a90; --accent-pink: #ff4d94; --text-dark: #5a3d5c; --white: #fff; --shadow: rgba(255, 126, 185, 0.2); }
+        body { color: var(--text-dark); background-color: #fff9fb; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        header { background: linear-gradient(135deg, var(--primary-pink) 0%, var(--dark-pink) 100%); color: var(--white); padding: 1.5rem 0; box-shadow: 0 4px 12px var(--shadow); position: sticky; top: 0; z-index: 1000; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 15px; }
+        .logo-icon { font-size: 2.5rem; }
+        .logo-text { font-size: 1.8rem; font-weight: 700; }
+        .logo-text span { font-size: 1.4rem; opacity: 0.9; display: block; margin-top: 5px; }
+        nav ul { display: flex; list-style: none; gap: 30px; }
+        nav a { color: var(--white); text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; padding: 5px 10px; border-radius: 20px; }
+        nav a:hover { background-color: rgba(255, 255, 255, 0.2); }
+        .page-banner { background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('https://images.unsplash.com/photo-1618335829737-2228905674ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center; padding: 80px 0; text-align: center; border-bottom: 8px solid var(--light-pink); }
+        .page-banner h1 { font-size: 3.5rem; color: var(--dark-pink); margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
+        .page-banner p { font-size: 1.4rem; max-width: 800px; margin: 0 auto; color: var(--text-dark); }
+        .product-detail { padding: 80px 0; }
+        .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .detail-image { border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px var(--shadow); }
+        .detail-image img { width: 100%; height: auto; display: block; transition: transform 0.5s ease; }
+        .detail-image:hover img { transform: scale(1.02); }
+        .detail-text h2 { font-size: 2.5rem; color: var(--dark-pink); margin-bottom: 20px; }
+        .detail-text p { font-size: 1.2rem; margin-bottom: 25px; color: var(--text-dark); }
+        .feature-list { list-style: none; margin: 30px 0; }
+        .feature-list li { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; font-size: 1.1rem; }
+        .feature-list i { color: var(--accent-pink); font-size: 1.3rem; width: 25px; }
+        .back-home { display: inline-block; background-color: var(--accent-pink); color: var(--white); padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; margin-top: 20px; transition: all 0.3s ease; box-shadow: 0 6px 15px rgba(232,74,144,0.3); }
+        .back-home:hover { background-color: var(--dark-pink); transform: translateY(-3px); }
+        footer { background-color: var(--dark-pink); color: var(--white); padding: 60px 0 30px; margin-top: 40px; }
+        .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; margin-bottom: 40px; }
+        .footer-column { flex: 1; min-width: 250px; }
+        .footer-column h3 { font-size: 1.5rem; margin-bottom: 25px; position: relative; padding-bottom: 10px; }
+        .footer-column h3:after { content: ''; position: absolute; width: 50px; height: 3px; background-color: var(--primary-pink); bottom: 0; left: 0; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: var(--light-pink); text-decoration: none; transition: all 0.3s ease; }
+        .footer-links a:hover { color: var(--white); padding-left: 5px; }
+        .contact-info { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+        .contact-info i { color: var(--primary-pink); }
+        .copyright { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; color: var(--light-pink); }
+        @media (max-width: 768px) {
+            .detail-grid { grid-template-columns: 1fr; }
+            .page-banner h1 { font-size: 2.5rem; }
+            .header-content { flex-direction: column; gap: 20px; }
+            nav ul { gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部（导航链接指向主页面相应锚点） -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-candy-cane"></i></div>
+                <div class="logo-text">GoodsSweets<span>好日子食品</span></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html#home">首页</a></li>
+                    <li><a href="index.html#about">公司背景</a></li>
+                    <li><a href="index.html#products">产品介绍</a></li>
+                    <li><a href="index.html#advantages">出口优势</a></li>
+                    <li><a href="index.html#contact">联系我们</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 火箭糖果横幅 -->
+    <section class="page-banner">
+        <div class="container">
+            <h1>🚀 火箭糖果</h1>
+            <p>探索宇宙的甜蜜 · 限量版火箭造型水果糖</p>
+        </div>
+    </section>
+
+    <!-- 产品详细介绍 -->
+    <section class="product-detail">
+        <div class="container">
+            <div class="detail-grid">
+                <div class="detail-image">
+                    <!-- 火箭糖果图片（可替换） -->
+                    <img src="https://images.unsplash.com/photo-1618335829737-2228905674ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="火箭糖果">
+                </div>
+                <div class="detail-text">
+                    <h2>火箭水果硬糖</h2>
+                    <p>以太空探索为灵感，打造独一无二的火箭造型糖果。每一颗糖果都采用天然果汁与植物提取物，色彩鲜艳，口味丰富，带您开启味觉的星际旅行。</p>
+                    
+                    <ul class="feature-list">
+                        <li><i class="fas fa-rocket"></i> 逼真火箭造型，3D立体设计</li>
+                        <li><i class="fas fa-apple-alt"></i> 五种水果口味：草莓、橙子、青苹果、蓝莓、柠檬</li>
+                        <li><i class="fas fa-leaf"></i> 天然色素，无人工添加</li>
+                        <li><i class="fas fa-globe"></i> 适合节日礼品、派对分享</li>
+                        <li><i class="fas fa-star"></i> 限量发售，附赠太空贴纸</li>
+                    </ul>
+
+                    <p><strong>规格：</strong> 每盒12支，独立包装 / 礼盒装（含24支）</p>
+                    <p><strong>适用场景：</strong> 儿童生日、太空主题派对、节日礼物、企业定制</p>
+
+                    <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> 返回首页</a>
+                    <a href="#" class="back-home" style="background-color: #ff4d94; margin-left: 15px;">联系采购</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚（与主站一致） -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>GoodsSweets</h3>
+                    <p>好日子食品有限公司，专业糖果出口商，致力于为全球消费者带来甜蜜与快乐。</p>
+                    <div class="contact-info"><i class="fas fa-map-marker-alt"></i> <span>上海市浦东新区糖果路88号</span></div>
+                    <div class="contact-info"><i class="fas fa-phone"></i> <span>+86 21 8888 9999</span></div>
+                    <div class="contact-info"><i class="fas fa-envelope"></i> <span>info@goodssweets.com</span></div>
+                </div>
+                <div class="footer-column">
+                    <h3>快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#home">首页</a></li>
+                        <li><a href="index.html#about">公司背景</a></li>
+                        <li><a href="index.html#products">产品介绍</a></li>
+                        <li><a href="index.html#advantages">出口优势</a></li>
+                        <li><a href="index.html#contact">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>主要市场</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">北美地区</a></li>
+                        <li><a href="#">欧洲联盟</a></li>
+                        <li><a href="#">东南亚</a></li>
+                        <li><a href="#">中东地区</a></li>
+                        <li><a href="#">澳大利亚</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 GoodsSweets好日子食品有限公司 版权所有 | 沪ICP备12345678号</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 可选：平滑滚动（如果从副页面点击锚点）
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
