@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品图鉴 - GoodsSweets好日子食品</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 沿用主站粉色主题样式 */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif; }
+        :root { --primary-pink: #ff7eb9; --light-pink: #ffd6e7; --dark-pink: #e84a90; --accent-pink: #ff4d94; --text-dark: #5a3d5c; --white: #fff; --shadow: rgba(255, 126, 185, 0.2); }
+        body { color: var(--text-dark); background-color: #fff9fb; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* 头部 */
+        header { background: linear-gradient(135deg, var(--primary-pink) 0%, var(--dark-pink) 100%); color: var(--white); padding: 1.5rem 0; box-shadow: 0 4px 12px var(--shadow); position: sticky; top: 0; z-index: 1000; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 15px; }
+        .logo-icon { font-size: 2.5rem; }
+        .logo-text { font-size: 1.8rem; font-weight: 700; }
+        .logo-text span { font-size: 1.4rem; opacity: 0.9; display: block; margin-top: 5px; }
+        nav ul { display: flex; list-style: none; gap: 30px; }
+        nav a { color: var(--white); text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; padding: 5px 10px; border-radius: 20px; }
+        nav a:hover { background-color: rgba(255, 255, 255, 0.2); }
+        
+        /* 页面横幅 */
+        .page-banner { background-color: var(--light-pink); padding: 60px 0; text-align: center; border-bottom: 8px solid var(--primary-pink); }
+        .page-banner h1 { font-size: 3rem; color: var(--dark-pink); margin-bottom: 15px; }
+        .page-banner p { font-size: 1.3rem; color: var(--text-dark); max-width: 700px; margin: 0 auto; }
+        
+        /* 九宫格产品区 */
+        .gallery-section { padding: 80px 0; }
+        .gallery-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); /* 三列 */
+            gap: 30px; 
+        }
+        /* 响应式：小于800px变为两列，小于500px变为一列 */
+        @media (max-width: 800px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 500px) { .gallery-grid { grid-template-columns: 1fr; } }
+        
+        .gallery-card { 
+            background-color: var(--white); 
+            border-radius: 20px; 
+            overflow: hidden; 
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08); 
+            transition: all 0.3s ease; 
+        }
+        .gallery-card:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 20px 30px var(--shadow); 
+        }
+        .gallery-image { 
+            height: 250px; 
+            overflow: hidden; 
+        }
+        .gallery-image img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            transition: transform 0.5s ease; 
+        }
+        .gallery-card:hover .gallery-image img { 
+            transform: scale(1.05); 
+        }
+        /* 可选：为图片添加一个简单的标签（如果需要可取消注释） */
+        /* .gallery-caption { padding: 15px; text-align: center; font-weight: 600; color: var(--dark-pink); } */
+        
+        /* 页脚（与主站一致） */
+        footer { background-color: var(--dark-pink); color: var(--white); padding: 60px 0 30px; margin-top: 40px; }
+        .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; margin-bottom: 40px; }
+        .footer-column { flex: 1; min-width: 250px; }
+        .footer-column h3 { font-size: 1.5rem; margin-bottom: 25px; position: relative; padding-bottom: 10px; }
+        .footer-column h3:after { content: ''; position: absolute; width: 50px; height: 3px; background-color: var(--primary-pink); bottom: 0; left: 0; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: var(--light-pink); text-decoration: none; transition: all 0.3s ease; }
+        .footer-links a:hover { color: var(--white); padding-left: 5px; }
+        .contact-info { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+        .contact-info i { color: var(--primary-pink); }
+        .copyright { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.9rem; color: var(--light-pink); }
+        
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .header-content { flex-direction: column; gap: 20px; }
+            nav ul { gap: 15px; }
+            .page-banner h1 { font-size: 2.5rem; }
+            .gallery-image { height: 200px; }
+        }
+        @media (max-width: 480px) {
+            nav ul { flex-direction: column; align-items: center; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部（导航链接指向主站） -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-candy-cane"></i></div>
+                <div class="logo-text">GoodsSweets<span>好日子食品</span></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/first/index.html">首页</a></li>
+                    <li><a href="/first/index.html#about">公司背景</a></li>
+                    <li><a href="/first/index.html#products">产品介绍</a></li>
+                    <li><a href="/first/index.html#contact">联系我们</a></li>
+                    <li><a href="indexone.html" style="background-color: rgba(255,255,255,0.2);">产品图鉴</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 页面横幅 -->
+    <section class="page-banner">
+        <div class="container">
+            <h1>🍬 产品图鉴</h1>
+            <p>探索我们的全系列糖果，每一款都承载着甜蜜与匠心</p>
+        </div>
+    </section>
+
+    <!-- 九宫格产品图片 -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-grid">
+                <!-- 图片1：水果硬糖（可替换） -->
+                <div class="gallery-card">
+                    <div class="gallery-image">
+                        <!-- 图片路径1：水果硬糖 -->
+                         <a href="/third/indexa1.html">
+                        <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="水果硬糖">
+                    </div>
+                    </a>
+                    <!-- 如需要文字可取消注释下一行 -->
+                    <!-- <div class="gallery-caption">水果硬糖</div> -->
+                </div>
+                <!-- 图片2：牛奶巧克力 -->
+                <div class="gallery-card">
+                    <div class="gallery-image">
+                        <!-- 图片路径2：牛奶巧克力 -->
+                        <img src="https://images.unsplash.com/photo-1575224300306-1b8da36134ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="牛奶巧克力">
+                    </div>
+                </div>
+                <!-- 图片3：软糖 -->
+                <div class="gallery-card">
+                    <div class="gallery-image">
+                        <!-- 图片路径3：软糖 -->
+                        <img src="https://images.unsplash.com/photo-1532117182044-031e7cd916ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="软糖">
+                    </div>
+                </div>
+                <!-- 图片4：棒棒糖 -->
+                <div class="gallery-card">
+                    <div class="gallery-image">
+                        <!-- 图片路径4：棒棒糖 -->
+                        <img src="https://images.unsplash.com/photo-1585232351009-aa4c9e5c5c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="棒棒糖">
+                    </div>
+                </div>
+                <!-- 图片5：巧克力豆 -->
+                <div class="gallery-card">
+                    <div class="gallery-image">
+                        <!-- 图片路径5：巧克力豆 -->
+                        <img src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="巧克力豆">
+                    </div>
+                </div>
+                <!-- 图片6：薄荷糖 -->
+                <div class="gallery-card">
+                    <div class="gallery-image">
+                        <!-- 图片路径6：薄荷糖 -->
+                        <img src="https://images.unsplash.com/photo-1581798459219-318e76aecc7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="薄荷糖">
+                    </div>
+                </div>
+                <!-- 图片7：果汁软糖 -->
+                <div class="gallery-card">
+                    <div class="gallery-image">
+                        <!-- 图片路径7：果汁软糖 -->
+                        <img src="https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="果汁软糖">
+                    </div>
+                </div>
+                <!-- 图片8：棉花糖 -->
+                <div class="gallery-card">
+                    <div class="gallery-image">
+                        <!-- 图片路径8：棉花糖 -->
+                        <img src="https://images.unsplash.com/photo-1581086997057-0b1f648e2c48?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="棉花糖">
+                    </div>
+                </div>
+                <!-- 图片9：火箭糖果（使用您本地的图片，需确保路径正确） -->
+                <div class="gallery-card">
+                    <div class="gallery-image">
+                        <!-- 图片路径9：火箭糖果（可替换为本地图片） -->
+                        <img src="pp/p2.png" alt="火箭糖果">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>GoodsSweets</h3>
+                    <p>好日子食品有限公司，专业糖果出口商，致力于为全球消费者带来甜蜜与快乐。</p>
+                    <div class="contact-info"><i class="fas fa-map-marker-alt"></i> <span>上海市浦东新区糖果路88号</span></div>
+                    <div class="contact-info"><i class="fas fa-phone"></i> <span>+86 21 8888 9999</span></div>
+                    <div class="contact-info"><i class="fas fa-envelope"></i> <span>info@goodssweets.com</span></div>
+                </div>
+                <div class="footer-column">
+                    <h3>快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="index.html#about">公司背景</a></li>
+                        <li><a href="index.html#products">产品介绍</a></li>
+                        <li><a href="index.html#contact">联系我们</a></li>
+                        <li><a href="products-gallery.html">产品图鉴</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>主要市场</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">北美地区</a></li>
+                        <li><a href="#">欧洲联盟</a></li>
+                        <li><a href="#">东南亚</a></li>
+                        <li><a href="#">中东地区</a></li>
+                        <li><a href="#">澳大利亚</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 GoodsSweets好日子食品有限公司 版权所有 | 沪ICP备12345678号</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 简单平滑滚动（如果需要，这里没有锚点，但保留无妨）
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
