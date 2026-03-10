@@ -79,7 +79,7 @@
         /* 出口优势模块已删除，以下样式保留备用，但实际无对应HTML */
         footer { background-color: var(--dark-pink); color: var(--white); padding: 60px 0 30px; margin-top: 40px; }
         .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; margin-bottom: 40px; }
-        .footer-column { flex: 1; min-width: 250px; }
+        .footer-column { flex: 1; min-width: 250px; }         
         .footer-column h3 { font-size: 1.5rem; margin-bottom: 25px; position: relative; padding-bottom: 10px; }
         .footer-column h3:after { content: ''; position: absolute; width: 50px; height: 3px; background-color: var(--primary-pink); bottom: 0; left: 0; }
         .footer-links { list-style: none; }
@@ -120,10 +120,11 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#home">首页</a></li>
-                    <li><a href="#about">公司背景</a></li>
+                    <li><a href="#home">home</a></li>
+                    <!-- 调整顺序：产品介绍在前，公司背景在后 -->
                     <li><a href="#products">产品介绍</a></li>
-                    <li><a href="#contact">联系我们</a></li>  <!-- 移除了出口优势链接 -->
+                    <li><a href="#about">公司背景</a></li>
+                    <li><a href="#contact">联系我们</a></li>
                 </ul>
             </nav>
         </div>
@@ -135,23 +136,6 @@
             <h1>甜蜜全球，传递好日子</h1>
             <p>GoodsSweets好日子食品是一家专业从事高品质糖果出口的企业，我们的产品远销全球50多个国家和地区，将甜蜜与快乐带给世界各地的消费者。</p>
             <a href="#products" class="cta-button">探索我们的糖果</a>
-        </div>
-    </section>
-
-    <!-- 关于我们 - 已移除图片，文字居中并美化 -->
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title">公司背景</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>GoodsSweets好日子食品有限公司</h3>
-                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-                </div>
-                <!-- 图片已移除 -->
-            </div>
         </div>
     </section>
 
@@ -203,6 +187,23 @@
         </div>
     </section>
 
+    <!-- 关于我们 - 已移除图片，文字居中并美化（现在位于产品介绍之后） -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">公司背景</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>GoodsSweets好日子食品有限公司</h3>
+                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+                </div>
+                <!-- 图片已移除 -->
+            </div>
+        </div>
+    </section>
+
     <!-- 出口优势模块已删除 -->
 
     <!-- 页脚 -->
@@ -212,17 +213,18 @@
                 <div class="footer-column">
                     <h3>GoodsSweets</h3>
                     <p>好日子食品有限公司，专业糖果出口商，致力于为全球消费者带来甜蜜与快乐。</p>
-                    <div class="contact-info"><i class="fas fa-map-marker-alt"></i> <span>上海市浦东新区糖果路88号</span></div>
+                    <div class="contact-info"><i class="fas fa-map-marker-alt"></i> <span>宁波市xxxxxx</span></div>
                     <div class="contact-info"><i class="fas fa-phone"></i> <span>+86 21 8888 9999</span></div>
                     <div class="contact-info"><i class="fas fa-envelope"></i> <span>info@goodssweets.com</span></div>
                 </div>
                 <div class="footer-column">
                     <h3>快速链接</h3>
                     <ul class="footer-links">
-                        <li><a href="#home">首页</a></li>
-                        <li><a href="#about">公司背景</a></li>
+                        <li><a href="#home">home</a></li>
+                        <!-- 调整顺序：产品介绍在前，公司背景在后 -->
                         <li><a href="#products">产品介绍</a></li>
-                        <li><a href="#contact">联系我们</a></li>  <!-- 移除了出口优势链接 -->
+                        <li><a href="#about">公司背景</a></li>
+                        <li><a href="#contact">联系我们</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -237,7 +239,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 GoodsSweets好日子食品有限公司 版权所有 | 沪ICP备12345678号</p>
+                <p>&copy; 2026 GoodsSweets好日子食品有限公司 版权所有 | xxxxxxxxx</p>
             </div>
         </div>
     </footer>
