@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>产品图鉴 - GoodsSweets好日子食品</title>
+    <title>Product Gallery - GoodsSweets</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* 沿用主站粉色主题样式 */
+        /* Inherit pink theme from main site */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif; }
         :root { --primary-pink: #ff7eb9; --light-pink: #ffd6e7; --dark-pink: #e84a90; --accent-pink: #ff4d94; --text-dark: #5a3d5c; --white: #fff; --shadow: rgba(255, 126, 185, 0.2); }
         body { color: var(--text-dark); background-color: #fff9fb; line-height: 1.6; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         
-        /* 头部 */
+        /* Header */
         header { background: linear-gradient(135deg, var(--primary-pink) 0%, var(--dark-pink) 100%); color: var(--white); padding: 1.5rem 0; box-shadow: 0 4px 12px var(--shadow); position: sticky; top: 0; z-index: 1000; }
         .header-content { display: flex; justify-content: space-between; align-items: center; }
         .logo { display: flex; align-items: center; gap: 15px; }
@@ -23,19 +23,18 @@
         nav a { color: var(--white); text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; padding: 5px 10px; border-radius: 20px; }
         nav a:hover { background-color: rgba(255, 255, 255, 0.2); }
         
-        /* 页面横幅 */
+        /* Page Banner */
         .page-banner { background-color: var(--light-pink); padding: 60px 0; text-align: center; border-bottom: 8px solid var(--primary-pink); }
         .page-banner h1 { font-size: 3rem; color: var(--dark-pink); margin-bottom: 15px; }
         .page-banner p { font-size: 1.3rem; color: var(--text-dark); max-width: 700px; margin: 0 auto; }
         
-        /* 九宫格产品区 */
+        /* 3x3 Gallery */
         .gallery-section { padding: 80px 0; }
         .gallery-grid { 
             display: grid; 
-            grid-template-columns: repeat(3, 1fr); /* 三列 */
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px; 
         }
-        /* 响应式：小于800px变为两列，小于500px变为一列 */
         @media (max-width: 800px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 500px) { .gallery-grid { grid-template-columns: 1fr; } }
         
@@ -63,10 +62,8 @@
         .gallery-card:hover .gallery-image img { 
             transform: scale(1.05); 
         }
-        /* 可选：为图片添加一个简单的标签（如果需要可取消注释） */
-        /* .gallery-caption { padding: 15px; text-align: center; font-weight: 600; color: var(--dark-pink); } */
         
-        /* 页脚（与主站一致） */
+        /* Footer (consistent with main site) */
         footer { background-color: var(--dark-pink); color: var(--white); padding: 60px 0 30px; margin-top: 40px; }
         .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; margin-bottom: 40px; }
         .footer-column { flex: 1; min-width: 250px; }
@@ -80,7 +77,6 @@
         .contact-info i { color: var(--primary-pink); }
         .copyright { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.9rem; color: var(--light-pink); }
         
-        /* 响应式调整 */
         @media (max-width: 768px) {
             .header-content { flex-direction: column; gap: 20px; }
             nav ul { gap: 15px; }
@@ -93,148 +89,137 @@
     </style>
 </head>
 <body>
-    <!-- 头部（导航链接指向主站） -->
+    <!-- Header (navigation links to main site) -->
     <header>
         <div class="container header-content">
             <div class="logo">
                 <div class="logo-icon"><i class="fas fa-candy-cane"></i></div>
-                <div class="logo-text">GoodsSweets<span>好日子食品</span></div>
+                <div class="logo-text">GoodsSweets<span>Good Days Food</span></div>
             </div>
             <nav>
                 <ul>
-                    <li><a href="/index.html">首页</a></li>
-                    <li><a href="/index.html#about">公司背景</a></li>
-                    <li><a href="/index.html#products">产品介绍</a></li>
-                    <li><a href="/index.html#contact">联系我们</a></li>
-                    <li><a href="indexone.html" style="background-color: rgba(255,255,255,0.2);">产品图鉴</a></li>
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/index.html#about">About Us</a></li>
+                    <li><a href="/index.html#products">Products</a></li>
+                    <li><a href="/index.html#contact">Contact</a></li>
+                    <li><a href="indexone.html" style="background-color: rgba(255,255,255,0.2);">Gallery</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- 页面横幅 -->
+    <!-- Page Banner -->
     <section class="page-banner">
         <div class="container">
-            <h1>🍬 产品图鉴</h1>
-            <p>探索我们的全系列糖果，每一款都承载着甜蜜与匠心</p>
+            <h1>🍬 Product Gallery</h1>
+            <p>Explore our full range of candies, each crafted with sweetness and care</p>
         </div>
     </section>
 
-    <!-- 九宫格产品图片 -->
+    <!-- 3x3 Product Images -->
     <section class="gallery-section">
         <div class="container">
             <div class="gallery-grid">
-                <!-- 图片1：水果硬糖（可替换） -->
+                <!-- Image 1: Fruit Hard Candy -->
                 <div class="gallery-card">
                     <div class="gallery-image">
-                        <!-- 图片路径1：水果硬糖 -->
-                         <a href="/third/indexa1.html">
-                        <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="水果硬糖">
-                    </div>
-                    </a>
-                    <!-- 如需要文字可取消注释下一行 -->
-                    <!-- <div class="gallery-caption">水果硬糖</div> -->
-                </div>
-                <!-- 图片2：牛奶巧克力 -->
-                <div class="gallery-card">
-                    <div class="gallery-image">
-                        <!-- 图片路径2：牛奶巧克力 -->
-                        <img src="https://images.unsplash.com/photo-1575224300306-1b8da36134ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="牛奶巧克力">
+                        <a href="/third/indexa1.html">
+                            <img src="p01.png" alt="Fruit Hard Candy">
+                        </a>
                     </div>
                 </div>
-                <!-- 图片3：软糖 -->
+                <!-- Image 2: Milk Chocolate -->
                 <div class="gallery-card">
                     <div class="gallery-image">
-                        <!-- 图片路径3：软糖 -->
-                        <img src="https://images.unsplash.com/photo-1532117182044-031e7cd916ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="软糖">
+                        <img src="p02.png" alt="Milk Chocolate">
                     </div>
                 </div>
-                <!-- 图片4：棒棒糖 -->
+                <!-- Image 3: Gummy Candy -->
                 <div class="gallery-card">
                     <div class="gallery-image">
-                        <!-- 图片路径4：棒棒糖 -->
-                        <img src="https://images.unsplash.com/photo-1585232351009-aa4c9e5c5c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="棒棒糖">
+                        <img src="p03.png" alt="Gummy Candy">
                     </div>
                 </div>
-                <!-- 图片5：巧克力豆 -->
+                <!-- Image 4: Lollipop -->
                 <div class="gallery-card">
                     <div class="gallery-image">
-                        <!-- 图片路径5：巧克力豆 -->
-                        <img src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="巧克力豆">
+                        <img src="p04.png" alt="Lollipop">
                     </div>
                 </div>
-                <!-- 图片6：薄荷糖 -->
+                <!-- Image 5: Chocolate Beans -->
                 <div class="gallery-card">
                     <div class="gallery-image">
-                        <!-- 图片路径6：薄荷糖 -->
-                        <img src="https://images.unsplash.com/photo-1581798459219-318e76aecc7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="薄荷糖">
+                        <img src="p05.png" alt="Chocolate Beans">
                     </div>
                 </div>
-                <!-- 图片7：果汁软糖 -->
+                <!-- Image 6: Mint Candy -->
                 <div class="gallery-card">
                     <div class="gallery-image">
-                        <!-- 图片路径7：果汁软糖 -->
-                        <img src="https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="果汁软糖">
+                        <img src="p06.png" alt="Mint Candy">
                     </div>
                 </div>
-                <!-- 图片8：棉花糖 -->
+                <!-- Image 7: Fruit Gummies -->
                 <div class="gallery-card">
                     <div class="gallery-image">
-                        <!-- 图片路径8：棉花糖 -->
-                        <img src="https://images.unsplash.com/photo-1581086997057-0b1f648e2c48?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="棉花糖">
+                        <img src="p07.png" alt="Fruit Gummies">
                     </div>
                 </div>
-                <!-- 图片9：火箭糖果（使用您本地的图片，需确保路径正确） -->
+                <!-- Image 8: Marshmallow -->
                 <div class="gallery-card">
                     <div class="gallery-image">
-                        <!-- 图片路径9：火箭糖果（可替换为本地图片） -->
-                        <img src="/p2.png" alt="火箭糖果">
+                        <img src="p08.png" alt="Marshmallow">
+                    </div>
+                </div>
+                <!-- Image 9: Rocket Candy (local image) -->
+                <div class="gallery-card">
+                    <div class="gallery-image">
+                        <img src="p09.png" alt="Rocket Candy">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 页脚 -->
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>GoodsSweets</h3>
-                    <p>好日子食品有限公司，专业糖果出口商，致力于为全球消费者带来甜蜜与快乐。</p>
-                    <div class="contact-info"><i class="fas fa-map-marker-alt"></i> <span>上海市浦东新区糖果路88号</span></div>
+                    <p>GoodsSweets Co., Ltd., a professional candy exporter dedicated to bringing sweetness and joy to consumers worldwide.</p>
+                    <div class="contact-info"><i class="fas fa-map-marker-alt"></i> <span>No.88 Candy Road, Pudong New Area, Shanghai</span></div>
                     <div class="contact-info"><i class="fas fa-phone"></i> <span>+86 21 8888 9999</span></div>
                     <div class="contact-info"><i class="fas fa-envelope"></i> <span>info@goodssweets.com</span></div>
                 </div>
                 <div class="footer-column">
-                    <h3>快速链接</h3>
+                    <h3>Quick Links</h3>
                     <ul class="footer-links">
-                        <li><a href="/index.html">首页</a></li>
-                        <li><a href="/index.html#about">公司背景</a></li>
-                        <li><a href="/index.html#products">产品介绍</a></li>
-                        <li><a href="/index.html#contact">联系我们</a></li>
-                        <li><a href="/index.html#products">产品图鉴</a></li>
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/index.html#about">About Us</a></li>
+                        <li><a href="/index.html#products">Products</a></li>
+                        <li><a href="/index.html#contact">Contact</a></li>
+                        <li><a href="/index.html#products">Gallery</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>主要市场</h3>
+                    <h3>Main Markets</h3>
                     <ul class="footer-links">
-                        <li><a href="#">北美地区</a></li>
-                        <li><a href="#">欧洲联盟</a></li>
-                        <li><a href="#">东南亚</a></li>
-                        <li><a href="#">中东地区</a></li>
-                        <li><a href="#">澳大利亚</a></li>
+                        <li><a href="#">North America</a></li>
+                        <li><a href="#">European Union</a></li>
+                        <li><a href="#">Southeast Asia</a></li>
+                        <li><a href="#">Middle East</a></li>
+                        <li><a href="#">Australia</a></li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 GoodsSweets好日子食品有限公司 版权所有 | 沪ICP备12345678号</p>
+                <p>&copy; 2023 GoodsSweets Co., Ltd. All Rights Reserved | ICP: 12345678</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // 简单平滑滚动（如果需要，这里没有锚点，但保留无妨）
+        // Simple smooth scroll (kept for consistency)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
