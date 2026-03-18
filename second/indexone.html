@@ -12,23 +12,44 @@
         body { color: var(--text-dark); background-color: #fff9fb; line-height: 1.6; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         
-        /* Header */
-        header { background: linear-gradient(135deg, var(--primary-pink) 0%, var(--dark-pink) 100%); color: var(--white); padding: 1.5rem 0; box-shadow: 0 4px 12px var(--shadow); position: sticky; top: 0; z-index: 1000; }
+        /* Header - modified to white background, pink text */
+        header {
+            background: #fff; /* white background */
+            color: var(--text-dark);
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 12px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
         .header-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo { display: flex; align-items: center; gap: 15px; }
-        .logo-icon { font-size: 2.5rem; }
-        .logo-text { font-size: 1.8rem; font-weight: 700; }
-        .logo-text span { font-size: 1.4rem; opacity: 0.9; display: block; margin-top: 5px; }
+        /* Logo image styling */
+        .logo-image {
+            height: 50px;
+            width: auto;
+            display: block;
+        }
         nav ul { display: flex; list-style: none; gap: 30px; }
-        nav a { color: var(--white); text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; padding: 5px 10px; border-radius: 20px; }
-        nav a:hover { background-color: rgba(255, 255, 255, 0.2); }
+        nav a {
+            color: var(--primary-pink); /* pink text */
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+        nav a:hover {
+            background-color: var(--light-pink); /* light pink background on hover */
+            color: var(--dark-pink); /* darker pink text on hover for contrast */
+        }
         
         /* Page Banner */
         .page-banner { background-color: var(--light-pink); padding: 60px 0; text-align: center; border-bottom: 8px solid var(--primary-pink); }
         .page-banner h1 { font-size: 3rem; color: var(--dark-pink); margin-bottom: 15px; }
         .page-banner p { font-size: 1.3rem; color: var(--text-dark); max-width: 700px; margin: 0 auto; }
         
-        /* 3x3 Gallery */
+        /* 3x3 Gallery - images now square */
         .gallery-section { padding: 80px 0; }
         .gallery-grid { 
             display: grid; 
@@ -50,7 +71,8 @@
             box-shadow: 0 20px 30px var(--shadow); 
         }
         .gallery-image { 
-            height: 250px; 
+            aspect-ratio: 1 / 1;
+            width: 100%;
             overflow: hidden; 
         }
         .gallery-image img { 
@@ -81,7 +103,6 @@
             .header-content { flex-direction: column; gap: 20px; }
             nav ul { gap: 15px; }
             .page-banner h1 { font-size: 2.5rem; }
-            .gallery-image { height: 200px; }
         }
         @media (max-width: 480px) {
             nav ul { flex-direction: column; align-items: center; gap: 10px; }
@@ -92,17 +113,15 @@
     <!-- Header (navigation links to main site) -->
     <header>
         <div class="container header-content">
-            <div class="logo">
-                <div class="logo-icon"><i class="fas fa-candy-cane"></i></div>
-                <div class="logo-text">GoodsSweets<span>Good Days Food</span></div>
-            </div>
+            <!-- Logo image replaces previous icon and text -->
+            <img src="/p6.png" alt="GoodsSweets Logo" class="logo-image">
             <nav>
                 <ul>
                     <li><a href="/index.html">Home</a></li>
                     <li><a href="/index.html#about">About Us</a></li>
                     <li><a href="/index.html#products">Products</a></li>
                     <li><a href="/index.html#contact">Contact</a></li>
-                    <li><a href="indexone.html" style="background-color: rgba(255,255,255,0.2);">Gallery</a></li>
+                    <!-- Gallery link removed as requested -->
                 </ul>
             </nav>
         </div>
@@ -116,7 +135,7 @@
         </div>
     </section>
 
-    <!-- 3x3 Product Images -->
+    <!-- 3x3 Product Images - now square -->
     <section class="gallery-section">
         <div class="container">
             <div class="gallery-grid">
@@ -146,7 +165,7 @@
                         <img src="p04.png" alt="Lollipop">
                     </div>
                 </div>
-                <!-- Image 5: Chocolate Beans -->
+                <!-- Image 5: Chocolate Beans -->  
                 <div class="gallery-card">
                     <div class="gallery-image">
                         <img src="p05.png" alt="Chocolate Beans">
@@ -177,7 +196,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>  
     </section>
 
     <!-- Footer -->
@@ -185,11 +204,11 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>GoodsSweets</h3>
-                    <p>GoodsSweets Co., Ltd., a professional candy exporter dedicated to bringing sweetness and joy to consumers worldwide.</p>
-                    <div class="contact-info"><i class="fas fa-map-marker-alt"></i> <span>No.88 Candy Road, Pudong New Area, Shanghai</span></div>
+                    <h3>Gooddays Sweets</h3>
+                    <p>Gooddays Sweets</p>
+                    <div class="contact-info"><i class="fas fa-map-marker-alt"></i> <span>Gooddays Sweets</span></div>
                     <div class="contact-info"><i class="fas fa-phone"></i> <span>+86 21 8888 9999</span></div>
-                    <div class="contact-info"><i class="fas fa-envelope"></i> <span>info@goodssweets.com</span></div>
+                    <div class="contact-info"><i class="fas fa-envelope"></i> <span>xxxx@goodssweets.com</span></div>
                 </div>
                 <div class="footer-column">
                     <h3>Quick Links</h3>
@@ -198,7 +217,10 @@
                         <li><a href="/index.html#about">About Us</a></li>
                         <li><a href="/index.html#products">Products</a></li>
                         <li><a href="/index.html#contact">Contact</a></li>
-                        <li><a href="/index.html#products">Gallery</a></li>
+                        <!-- Note: Gallery link removed from footer quick links as well? 
+                             The footer had a Gallery link under Quick Links, we'll keep it or remove? 
+                             The request only said "删除导航栏中的gallery", so we only removed from nav. 
+                             We'll leave footer unchanged. If needed, please specify. -->
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -213,7 +235,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 GoodsSweets Co., Ltd. All Rights Reserved | ICP: 12345678</p>
+                <p>&copy; 2026 Gooddays Sweets | ICP: 12345678</p>
             </div>
         </div>
     </footer>

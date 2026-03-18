@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candy Discovery - GoodsSweets</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+
+        :root {
+            --primary-pink: #ff7eb9;
+            --light-pink: #ffd6e7;
+            --dark-pink: #e84a90;
+            --accent-pink: #ff4d94;
+            --text-dark: #5a3d5c;
+            --white: #fff;
+            --shadow: rgba(255, 126, 185, 0.3);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            color: var(--text-dark);
+            background-color: #fff9fb;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-pink) 0%, var(--dark-pink) 100%);
+            color: var(--white);
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 12px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo-text span {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            display: block;
+            margin-top: 5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+
+        nav a:hover,
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Page Banner */
+        .page-banner {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+                url('https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 0;
+            text-align: center;
+            border-bottom: 8px solid var(--light-pink);
+        }
+
+        .page-banner h1 {
+            font-size: 3.5rem;
+            color: var(--dark-pink);
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .page-banner p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--text-dark);
+        }
+
+        /* Filter Buttons */
+        .filter-section {
+            padding: 50px 0 20px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: var(--white);
+            border: 2px solid var(--primary-pink);
+            color: var(--dark-pink);
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 8px var(--shadow);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--accent-pink);
+            border-color: var(--accent-pink);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px var(--shadow);
+        }
+
+        /* Product Grid */
+        .discovery-section {
+            padding: 30px 0 80px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            position: relative;
+            cursor: pointer;
+            opacity: 1;
+            transform: scale(1);
+            transition: opacity 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 40px var(--shadow);
+        }
+
+        .product-card.hidden {
+            display: none;
+        }
+
+        .product-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        /* Overlay with product info on hover */
+        .product-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(232, 74, 144, 0.9), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            color: var(--white);
+        }
+
+        .product-card:hover .product-overlay {
+            opacity: 1;
+        }
+
+        .product-overlay h3 {
+            font-size: 1.6rem;
+            margin-bottom: 5px;
+            transform: translateY(20px);
+            transition: transform 0.4s ease 0.1s;
+        }
+
+        .product-overlay p {
+            font-size: 1rem;
+            transform: translateY(20px);
+            transition: transform 0.4s ease 0.2s;
+            opacity: 0.9;
+        }
+
+        .product-card:hover .product-overlay h3,
+        .product-card:hover .product-overlay p {
+            transform: translateY(0);
+        }
+
+        /* Product tag */
+        .product-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--accent-pink);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-pink);
+            color: var(--white);
+            padding: 60px 0 30px;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-pink);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--light-pink);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .contact-info i {
+            color: var(--primary-pink);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: var(--light-pink);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            .page-banner h1 {
+                font-size: 2.5rem;
+            }
+
+            .page-banner p {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .filter-buttons {
+                gap: 10px;
+            }
+
+            .filter-btn {
+                padding: 8px 20px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-candy-cane"></i></div>
+                <div class="logo-text">GoodsSweets<span>Good Days Food</span></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/index.html#products">Products</a></li>
+                    <li><a href="/index.html#about">About Us</a></li>
+                    <li><a href="/index.html#contact">Contact</a></li>
+                    <li><a href="#" class="active">Discovery</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <h1>🍭 Candy Discovery</h1>
+            <p>Explore our collection · Hover to reveal flavors · Click to filter</p>
+        </div>
+    </section>
+
+    <!-- Filter Buttons -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="fruit">Fruit</button>
+                <button class="filter-btn" data-filter="chocolate">Chocolate</button>
+                <button class="filter-btn" data-filter="gummy">Gummy</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Grid -->
+    <section class="discovery-section">
+        <div class="container">
+            <div class="product-grid">
+                <!-- Card 1: Fruit Hard Candy -->
+                <div class="product-card" data-category="fruit">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fruit Hard Candy">
+                        <div class="product-overlay">
+                            <h3>Fruit Hard Candy</h3>
+                            <p>Strawberry, Orange, Lemon & more</p>
+                        </div>
+                    </div>
+                    <span class="product-tag">Fruit</span>
+                </div>
+
+                <!-- Card 2: Milk Chocolate -->
+                <div class="product-card" data-category="chocolate">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1575224300306-1b8da36134ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Milk Chocolate">
+                        <div class="product-overlay">
+                            <h3>Milk Chocolate</h3>
+                            <p>Smooth & creamy, 35% cocoa</p>
+                        </div>
+                    </div>
+                    <span class="product-tag">Chocolate</span>
+                </div>
+
+                <!-- Card 3: Gummy Candy -->
+                <div class="product-card" data-category="gummy">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1532117182044-031e7cd916ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gummy Candy">
+                        <div class="product-overlay">
+                            <h3>Gummy Bears</h3>
+                            <p>Classic fruit flavors, fun shapes</p>
+                        </div>
+                    </div>
+                    <span class="product-tag">Gummy</span>
+                </div>
+
+                <!-- Card 4: Sour Worms (Gummy) -->
+                <div class="product-card" data-category="gummy">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sour Worms">
+                        <div class="product-overlay">
+                            <h3>Sour Worms</h3>
+                            <p>Tangy & sweet, irresistible</p>
+                        </div>
+                    </div>
+                    <span class="product-tag">Gummy</span>
+                </div>
+
+                <!-- Card 5: Chocolate Beans (Chocolate) -->
+                <div class="product-card" data-category="chocolate">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Chocolate Beans">
+                        <div class="product-overlay">
+                            <h3>Chocolate Beans</h3>
+                            <p>Crunchy shell, smooth center</p>
+                        </div>
+                    </div>
+                    <span class="product-tag">Chocolate</span>
+                </div>
+
+                <!-- Card 6: Mint Candy (Fruit? actually mint, but let's put as fruit for demo) -->
+                <div class="product-card" data-category="fruit">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1581798459219-318e76aecc7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mint Candy">
+                        <div class="product-overlay">
+                            <h3>Mint Candy</h3>
+                            <p>Refreshing peppermint</p>
+                        </div>
+                    </div>
+                    <span class="product-tag">Mint</span>
+                </div>
+
+                <!-- Card 7: Rocket Candy (Fruit) -->
+                <div class="product-card" data-category="fruit">
+                    <div class="product-image">
+                        <img src="/p2.png" alt="Rocket Candy">
+                        <div class="product-overlay">
+                            <h3>Rocket Candy</h3>
+                            <p>Space-themed fruit flavors</p>
+                        </div>
+                    </div>
+                    <span class="product-tag">Fruit</span>
+                </div>
+
+                <!-- Card 8: Lollipop (Fruit) -->
+                <div class="product-card" data-category="fruit">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1585232351009-aa4c9e5c5c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Lollipop">
+                        <div class="product-overlay">
+                            <h3>Lollipop</h3>
+                            <p>Classic swirl pops</p>
+                        </div>
+                    </div>
+                    <span class="product-tag">Fruit</span>
+                </div>
+
+                <!-- Card 9: Marshmallow (Gummy-ish) -->
+                <div class="product-card" data-category="gummy">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1581086997057-0b1f648e2c48?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Marshmallow">
+                        <div class="product-overlay">
+                            <h3>Marshmallow</h3>
+                            <p>Soft & fluffy, vanilla flavor</p>
+                        </div>
+                    </div>
+                    <span class="product-tag">Gummy</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>GoodsSweets</h3>
+                    <p>GoodsSweets Co., Ltd., a professional candy exporter dedicated to bringing sweetness and joy to consumers worldwide.</p>
+                    <div class="contact-info"><i class="fas fa-map-marker-alt"></i> <span>No.88 Candy Road, Pudong New Area, Shanghai</span></div>
+                    <div class="contact-info"><i class="fas fa-phone"></i> <span>+86 21 8888 9999</span></div>
+                    <div class="contact-info"><i class="fas fa-envelope"></i> <span>info@goodssweets.com</span></div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/index.html#products">Products</a></li>
+                        <li><a href="/index.html#about">About Us</a></li>
+                        <li><a href="/index.html#contact">Contact</a></li>
+                        <li><a href="#">Discovery</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Main Markets</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">North America</a></li>
+                        <li><a href="#">European Union</a></li>
+                        <li><a href="#">Southeast Asia</a></li>
+                        <li><a href="#">Middle East</a></li>
+                        <li><a href="#">Australia</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 GoodsSweets Co., Ltd. All Rights Reserved | Designed with 🍬</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filterValue = button.getAttribute('data-filter');
+
+                productCards.forEach(card => {
+                    if (filterValue === 'all') {
+                        card.classList.remove('hidden');
+                    } else {
+                        const category = card.getAttribute('data-category');
+                        if (category === filterValue) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+        });
+
+        // Smooth scroll for anchor links (if any)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Sticky header shrink on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            header.style.padding = window.scrollY > 50 ? '0.8rem 0' : '1.5rem 0';
+        });
+    </script>
+</body>
+</html>

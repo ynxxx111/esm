@@ -11,21 +11,45 @@
         :root { --primary-pink: #ff7eb9; --light-pink: #ffd6e7; --dark-pink: #e84a90; --accent-pink: #ff4d94; --text-dark: #5a3d5c; --white: #fff; --shadow: rgba(255, 126, 185, 0.2); }
         body { color: var(--text-dark); background-color: #fff9fb; line-height: 1.6; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        header { background: linear-gradient(135deg, var(--primary-pink) 0%, var(--dark-pink) 100%); color: var(--white); padding: 1.5rem 0; box-shadow: 0 4px 12px var(--shadow); position: sticky; top: 0; z-index: 1000; }
+
+        /* Header modified: white background, pink text, logo image */
+        header {
+            background: #fff; /* changed from gradient to white */
+            color: var(--text-dark);
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 12px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
         .header-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo { display: flex; align-items: center; gap: 15px; }
-        .logo-icon { font-size: 2.5rem; }
-        .logo-text { font-size: 1.8rem; font-weight: 700; }
-        .logo-text span { font-size: 1.4rem; opacity: 0.9; display: block; margin-top: 5px; }
+        /* Logo image styling */
+        .logo-image {
+            height: 50px;
+            width: auto;
+            display: block;
+        }
         nav ul { display: flex; list-style: none; gap: 30px; }
-        nav a { color: var(--white); text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; padding: 5px 10px; border-radius: 20px; }
-        nav a:hover { background-color: rgba(255, 255, 255, 0.2); }
+        nav a {
+            color: var(--primary-pink); /* pink text */
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+        nav a:hover {
+            background-color: var(--light-pink); /* light pink background */
+            color: var(--dark-pink); /* darker pink text on hover */
+        }
+
         .page-banner { background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('https://images.unsplash.com/photo-1618335829737-2228905674ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center; padding: 80px 0; text-align: center; border-bottom: 8px solid var(--light-pink); }
         .page-banner h1 { font-size: 3.5rem; color: var(--dark-pink); margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
         .page-banner p { font-size: 1.4rem; max-width: 800px; margin: 0 auto; color: var(--text-dark); }
         .product-detail { padding: 80px 0; }
         
-        /* New image grid: three images in a row */
+        /* Image grid: three images in a row */
         .image-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -36,7 +60,7 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 20px 40px var(--shadow);
-            height: 280px; /* Fixed height for consistency */
+            height: 280px;
         }
         .image-grid .detail-image img {
             width: 100%;
@@ -48,20 +72,15 @@
             transform: scale(1.05);
         }
         
-        /* Responsive: tablet -> 2 columns, mobile -> 1 column */
         @media (max-width: 800px) {
-            .image-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .image-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 500px) {
-            .image-grid {
-                grid-template-columns: 1fr;
-            }
+            .image-grid { grid-template-columns: 1fr; }
         }
         
         .detail-text {
-            text-align: center; /* Center align the text below images */
+            text-align: center;
             max-width: 900px;
             margin: 0 auto;
         }
@@ -149,13 +168,11 @@
     </style>
 </head>
 <body>
-    <!-- Header (navigation links to main site) -->
+    <!-- Header with logo image and white/pink nav -->
     <header>
         <div class="container header-content">
-            <div class="logo">
-                <div class="logo-icon"><i class="fas fa-candy-cane"></i></div>
-                <div class="logo-text">GoodsSweets<span>Good Days Food</span></div>
-            </div>
+            <!-- Logo image replaces previous icon and text -->
+            <img src="/p6.png" alt="GoodsSweets Logo" class="logo-image">
             <nav>
                 <ul>
                     <li><a href="/index.html#home">Home</a></li>
@@ -170,8 +187,8 @@
     <!-- Rocket Candy Banner -->
     <section class="page-banner">
         <div class="container">
-            <h1>🚀 Rocket Candy</h1>
-            <p>Explore the sweetness of the universe · Limited edition rocket-shaped fruit candies</p>
+            <h1>🚀 xxx</h1>
+            <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
         </div>
     </section>
 
@@ -181,8 +198,9 @@
             <!-- Three images in a row -->
             <div class="image-grid">
                 <div class="detail-image">
-                    <!-- Replace with your own images -->
-                    <img src="p001.png" alt="Rocket Candy - Front View">
+                    <a href="/four/indexd.html">
+                        <img src="p001.png" alt="Rocket Candy - Front View">
+                    </a>
                 </div>
                 <div class="detail-image">
                     <img src="p002.png" alt="Rocket Candy - Side View">
@@ -194,8 +212,8 @@
             
             <!-- Description below images -->
             <div class="detail-text">
-                <h2>Rocket Fruit Hard Candy</h2>
-                <p>Inspired by space exploration, these unique rocket-shaped candies are crafted with natural fruit juices and plant extracts. Each candy is vibrant in color and rich in flavor, taking you on an interstellar taste journey.</p>
+                <h2>Gooddays Sweets</h2>
+                <p>Gooddays Sweets Gooddays Sweets Gooddays Sweets</p>
                 
                 <ul class="feature-list">
                     <li><i class="fas fa-rocket"></i> Realistic 3D rocket design</li>
@@ -223,11 +241,11 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>GoodsSweets</h3>
-                    <p>GoodsSweets Co., Ltd., a professional candy exporter dedicated to bringing sweetness and joy to consumers worldwide.</p>
-                    <div class="contact-info"><i class="fas fa-map-marker-alt"></i> <span>No.88 Candy Road, Pudong New Area, Shanghai</span></div>
+                    <h3>Gooddays Sweets</h3>
+                    <p>Gooddays Sweets</p>
+                    <div class="contact-info"><i class="fas fa-map-marker-alt"></i> <span>xxxxxxxxxx</span></div>
                     <div class="contact-info"><i class="fas fa-phone"></i> <span>+86 21 8888 9999</span></div>
-                    <div class="contact-info"><i class="fas fa-envelope"></i> <span>info@goodssweets.com</span></div>
+                    <div class="contact-info"><i class="fas fa-envelope"></i> <span>xxxx@goodssweets.com</span></div>
                 </div>
                 <div class="footer-column">
                     <h3>Quick Links</h3>
@@ -250,7 +268,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 GoodsSweets Co., Ltd. All Rights Reserved | ICP: 12345678</p>
+                <p>&copy; 2026 Gooddays Sweets | ICP: 12345678</p>
             </div>
         </div>
     </footer>
