@@ -103,14 +103,34 @@
         .section-title:after { content: ''; position: absolute; width: 100px; height: 4px; background-color: var(--primary-pink); bottom: -15px; left: 50%; transform: translateX(-50%); border-radius: 2px; }
         .about-content { display: flex; justify-content: center; flex-wrap: wrap; }
         .about-text { 
-            max-width: 800px; text-align: center; margin: 0 auto;
-            background-color: #fff0f5; padding: 40px 50px; border-radius: 30px;
-            box-shadow: 0 15px 30px var(--shadow); border: 1px solid var(--light-pink);
-            line-height: 1.8; font-size: 1.1rem;
+            max-width: 800px; 
+            text-align: center; 
+            margin: 0 auto;
+            background-color: #fff0f5; 
+            padding: 40px 50px; 
+            border-radius: 30px;
+            box-shadow: 0 15px 30px var(--shadow); 
+            border: 1px solid var(--light-pink);
+            line-height: 1.8; 
+            font-size: 1.1rem;
         }
-        .about-text h3 { font-size: 2rem; color: var(--accent-pink); margin-bottom: 25px; font-weight: 600; letter-spacing: 1px; }
-        .about-text p { margin-bottom: 20px; color: var(--text-dark); }
-        .about-text p:last-child { margin-bottom: 0; }
+        /* 将段落文字左对齐，保持标题居中 */
+        .about-text p {
+            text-align: left;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+        .about-text h3 { 
+            font-size: 2rem; 
+            color: var(--accent-pink); 
+            margin-bottom: 25px; 
+            font-weight: 600; 
+            letter-spacing: 1px; 
+            text-align: center; /* 标题保持居中 */
+        }
+        .about-text p:last-child {
+            margin-bottom: 0;
+        }
 
         .products { background-color: var(--light-pink); }
         .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
@@ -124,14 +144,40 @@
 
         footer { background-color: var(--dark-pink); color: var(--white); padding: 60px 0 30px; margin-top: 40px; }
         .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; margin-bottom: 40px; }
-        .footer-column { flex: 1; min-width: 250px; }         
-        .footer-column h3 { font-size: 1.5rem; margin-bottom: 25px; position: relative; padding-bottom: 10px; }
-        .footer-column h3:after { content: ''; position: absolute; width: 50px; height: 3px; background-color: var(--primary-pink); bottom: 0; left: 0; }
+        .footer-column { 
+            flex: 1; 
+            min-width: 250px;
+            padding-left: 20px; /* 为整个列增加左内边距，使文字不贴边 */
+        }
+        .footer-column:first-child {
+            padding-left: 0; /* 第一列不需要额外左边距 */
+        }
+        .footer-column h3 { 
+            font-size: 1.5rem; 
+            margin-bottom: 25px; 
+            position: relative; 
+            padding-bottom: 10px;
+        }
+        .footer-column h3:after { 
+            content: ''; 
+            position: absolute; 
+            width: 50px; 
+            height: 3px; 
+            background-color: var(--primary-pink); 
+            bottom: 0; 
+            left: 0; 
+        }
         .footer-links { list-style: none; }
         .footer-links li { margin-bottom: 12px; }
         .footer-links a { color: var(--light-pink); text-decoration: none; transition: all 0.3s ease; }
         .footer-links a:hover { color: var(--white); padding-left: 5px; }
-        .contact-info { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+        .contact-info { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
         .contact-info i { color: var(--primary-pink); }
         .copyright { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.9rem; color: var(--light-pink); }
 
@@ -144,7 +190,7 @@
             .section-title { font-size: 2rem; }
             .about-text { padding: 30px 25px; }
             .product-image { height: 220px; }
-            .hero { padding: 220px 0; } /* 从160px增加到220px */
+            .hero { padding: 220px 0; }
             .slider-arrow { width: 40px; height: 40px; font-size: 1.5rem; }
             .slider-arrow.left { left: 15px; }
             .slider-arrow.right { right: 15px; }
@@ -152,10 +198,13 @@
                 padding: 12px 30px; 
                 font-size: 1.1rem; 
             }
+            .footer-column { 
+                padding-left: 0; /* 移动端移除左内边距，避免过度缩进 */
+            }
         }
         @media (max-width: 480px) {
             nav ul { flex-direction: column; align-items: center; gap: 10px; }
-            .hero { padding: 180px 0; } /* 从140px增加到180px */
+            .hero { padding: 180px 0; }
             .hero h1 { font-size: 2rem; }
             .product-image { height: 200px; }
             .cta-button { 
@@ -231,11 +280,14 @@
             <h2 class="section-title">About Us</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>GoodsSweets Co., Ltd.</h3>
-                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+                    <h3>Enjoy Sweet Moments</h3>
+                    <p>
+At Gooddays Sweets, we believe life’s truest joys are found in Every Sweet Moment. Since 1999, we have been dedicated to designing and manufacturing innovative candy toys that transform ordinary moments into delightful memories for children and families across 48 countries and regions.</p>
+                    <p>
+As a global leader in candy toy manufacturing, we specialize in crafting imaginative and high quality products in key categories: Hard Candy, Liquid Candy and Gummy Candy. Our expertise extends from developing licensed products for the world’s top confectionery brands to building our own beloved brand portfolio supported by an expanding international network.</p>
+                    <p>Every product we create reflects our commitment to safety, creativity, and joy. We uphold the highest quality standards, holding certifications including ISO 9001, ISO 22000, BRC, SMETA, HALAL, Disney, and Walmart, and our products consistently meet or exceed stringent regulations such as FDA, ASTM, and European EN71 Part 1–3.</p>
+                    <p>
+From concept to consumption, we’re here to make moments sweeter—because at Gooddays Sweets, we don’t just make candy. We create memories, spark smiles, and celebrate the simple, sweet moments that bring us together.</p>
                 </div>
             </div>
         </div>
@@ -247,10 +299,10 @@
             <div class="footer-content">
                 <div class="footer-column"> 
                     <h3>GoodsSweets</h3>
-                    <p>GoodsSweets Co., Ltd., a professional candy exporter dedicated to bringing sweetness and joy to consumers worldwide.</p>
-                    <div class="contact-info"><i class="fas fa-map-marker-alt"></i> <span>Ningbo City xxxxxx</span></div>
-                    <div class="contact-info"><i class="fas fa-phone"></i> <span>+86 21 8888 9999</span></div>
-                    <div class="contact-info"><i class="fas fa-envelope"></i> <span>info@goodssweets.com</span></div>
+                    <div class="contact-info"><span>Head office: 11 Sassoon Drive, Barnet, EN4 0FJ London, UK</span></div>
+                    <div class="contact-info"><span>Factory: No.338 Anju Road, Beilun Area, Ningbo 315801, China</span></div>
+                    <div class="contact-info"><span>Phone: +86 13884499888</span></div>
+                    <div class="contact-info"><span>Email: sales@gooddays-sweets.com</span></div>
                 </div>  
                 <div class="footer-column">
                     <h3>Quick Links</h3>
@@ -261,16 +313,6 @@
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>  
-                <div class="footer-column">
-                    <h3>Main Markets</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">North America</a></li>
-                        <li><a href="#">European Union</a></li>
-                        <li><a href="#">Southeast Asia</a></li>
-                        <li><a href="#">Middle East</a></li>
-                        <li><a href="#">Australia</a></li>
-                    </ul> 
-                </div>
             </div>
             <div class="copyright">
                 <p>&copy; 2026 GoodsSweets Co., Ltd. All Rights Reserved | xxxxxxxxx</p>
