@@ -38,12 +38,12 @@
             color: var(--dark-pink);
         }
 
-        /* Hero banner with slideshow - increased height */
+        /* Hero banner with slideshow */
         .hero { 
             position: relative;
             background-size: cover; 
             background-position: center; 
-            padding: 350px 0; /* 从250px增加到350px */
+            padding: 350px 0;
             text-align: center; 
             border-bottom: 8px solid var(--light-pink);
             transition: background-image 0.8s ease;
@@ -114,7 +114,6 @@
             line-height: 1.8; 
             font-size: 1.1rem;
         }
-        /* 将段落文字左对齐，保持标题居中 */
         .about-text p {
             text-align: left;
             margin-bottom: 20px;
@@ -126,15 +125,16 @@
             margin-bottom: 25px; 
             font-weight: 600; 
             letter-spacing: 1px; 
-            text-align: center; /* 标题保持居中 */
+            text-align: center;
         }
         .about-text p:last-child {
             margin-bottom: 0;
         }
 
         .products { background-color: var(--light-pink); }
-        .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
-        @media (max-width: 1000px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+        /* 修改为三列布局，适配剩余三张图片 */
+        .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        @media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 600px) { .product-grid { grid-template-columns: 1fr; } }
         .product-card { background-color: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08); transition: all 0.3s ease; }
         .product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12); }
@@ -147,10 +147,10 @@
         .footer-column { 
             flex: 1; 
             min-width: 250px;
-            padding-left: 20px; /* 为整个列增加左内边距，使文字不贴边 */
+            padding-left: 20px;
         }
         .footer-column:first-child {
-            padding-left: 0; /* 第一列不需要额外左边距 */
+            padding-left: 0;
         }
         .footer-column h3 { 
             font-size: 1.5rem; 
@@ -199,7 +199,7 @@
                 font-size: 1.1rem; 
             }
             .footer-column { 
-                padding-left: 0; /* 移动端移除左内边距，避免过度缩进 */
+                padding-left: 0;
             }
         }
         @media (max-width: 480px) {
@@ -241,11 +241,12 @@
         <a href="#products" class="cta-button">Explore Our Candies</a>
     </section>
 
-    <!-- Products Section -->
+    <!-- Products Section - 三张图片，三列布局 -->
     <section class="products" id="products">
         <div class="container">
             <h2 class="section-title">Our Products</h2>
             <div class="product-grid">
+                <!-- 卡片1：水果硬糖 -->
                 <div class="product-card">
                     <div class="product-image">
                         <a href="/second/indexone.html">
@@ -253,16 +254,13 @@
                         </a>
                     </div>
                 </div>  
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="p3.png" alt="Milk Chocolate">
-                    </div>
-                </div>
+                <!-- 卡片2：软糖（原第三张） -->
                 <div class="product-card">
                     <div class="product-image">
                         <img src="p4.png" alt="Gummy Candy">
                     </div>
                 </div>
+                <!-- 卡片3：火箭糖果（原第四张） -->
                 <div class="product-card">
                     <div class="product-image">
                         <a href="/third/index1.html">
