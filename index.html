@@ -132,15 +132,90 @@
         }
 
         .products { background-color: var(--light-pink); }
-        /* 修改为三列布局，适配剩余三张图片 */
         .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
         @media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 600px) { .product-grid { grid-template-columns: 1fr; } }
-        .product-card { background-color: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08); transition: all 0.3s ease; }
-        .product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12); }
-        .product-image { height: 280px; overflow: hidden; }
-        .product-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-        .product-card:hover .product-image img { transform: scale(1.05); }
+        
+        .product-card { 
+            background-color: var(--white); 
+            border-radius: 15px; 
+            overflow: hidden; 
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08); 
+            transition: all 0.3s ease; 
+        }
+        .product-card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12); 
+        }
+        /* 正方形图片容器，完整显示图片，带自定义提示框 */
+        .product-image { 
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            background-color: #f5f5f5;
+        }
+        .product-image img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: contain; 
+            transition: transform 0.5s ease; 
+        }
+        .product-card:hover .product-image img { 
+            transform: scale(1.05); 
+        }
+
+        /* 自定义提示框样式 */
+        .product-image::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: linear-gradient(135deg, var(--accent-pink), var(--dark-pink));
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            pointer-events: none;
+            letter-spacing: 0.5px;
+        }
+
+        .product-card:hover .product-image::after {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* 添加小箭头效果（可选） */
+        .product-image::before {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 8px solid var(--accent-pink);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .product-card:hover .product-image::before {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
 
         footer { background-color: var(--dark-pink); color: var(--white); padding: 60px 0 30px; margin-top: 40px; }
         .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; margin-bottom: 40px; }
@@ -189,7 +264,6 @@
             section { padding: 60px 0; }
             .section-title { font-size: 2rem; }
             .about-text { padding: 30px 25px; }
-            .product-image { height: 220px; }
             .hero { padding: 220px 0; }
             .slider-arrow { width: 40px; height: 40px; font-size: 1.5rem; }
             .slider-arrow.left { left: 15px; }
@@ -206,7 +280,6 @@
             nav ul { flex-direction: column; align-items: center; gap: 10px; }
             .hero { padding: 180px 0; }
             .hero h1 { font-size: 2rem; }
-            .product-image { height: 200px; }
             .cta-button { 
                 padding: 10px 25px; 
                 font-size: 1rem; 
@@ -241,28 +314,28 @@
         <a href="#products" class="cta-button">Explore Our Candies</a>
     </section>
 
-    <!-- Products Section - 三张图片，三列布局 -->
+    <!-- Products Section - 三张图片，正方形，完整显示，自定义漂亮提示框 -->
     <section class="products" id="products">
         <div class="container">
             <h2 class="section-title">Our Products</h2>
             <div class="product-grid">
                 <!-- 卡片1：水果硬糖 -->
                 <div class="product-card">
-                    <div class="product-image">
+                    <div class="product-image" data-tooltip="🍬 Fruit Hard Candy ">
                         <a href="/second/indexone.html">
                             <img src="p2.png" alt="Fruit Hard Candy">
                         </a>
                     </div>
                 </div>  
-                <!-- 卡片2：软糖（原第三张） -->
+                <!-- 卡片2：软糖 -->
                 <div class="product-card">
-                    <div class="product-image">
+                    <div class="product-image" data-tooltip="🍭 Gummy Candy ">
                         <img src="p4.png" alt="Gummy Candy">
                     </div>
                 </div>
-                <!-- 卡片3：火箭糖果（原第四张） -->
+                <!-- 卡片3：火箭糖果 -->
                 <div class="product-card">
-                    <div class="product-image">
+                    <div class="product-image" data-tooltip="🚀 Rocket Candy ">
                         <a href="/third/index1.html">
                             <img src="/p5.png" alt="Rocket Candy">
                         </a>
@@ -296,24 +369,16 @@ From concept to consumption, we’re here to make moments sweeter—because at G
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column"> 
-                    <h3>GoodsSweets</h3>
+                    <h3>Gooddays Sweets</h3>
                     <div class="contact-info"><span>Head office: 11 Sassoon Drive, Barnet, EN4 0FJ London, UK</span></div>
                     <div class="contact-info"><span>Factory: No.338 Anju Road, Beilun Area, Ningbo 315801, China</span></div>
                     <div class="contact-info"><span>Phone: +86 13884499888</span></div>
                     <div class="contact-info"><span>Email: sales@gooddays-sweets.com</span></div>
                 </div>  
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#products">Products</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>  
+              
             </div>
             <div class="copyright">
-                <p>&copy; 2026 GoodsSweets Co., Ltd. All Rights Reserved | xxxxxxxxx</p>
+                <p>&copy; 2026Gooddays Sweets | xxxxxxxxx</p>
             </div>
         </div>
     </footer>
